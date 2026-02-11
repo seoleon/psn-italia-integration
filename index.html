@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Integration: Ricarica PSN Italia</title>
+    <style>
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.6; max-width: 700px; margin: 0 auto; padding: 40px 20px; color: #111; background-color: #fafafa; }
+        .container { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; letter-spacing: -1px; }
+        .badge { background: #0070f3; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+        .code-block { background: #f5f5f5; padding: 15px; border-radius: 6px; font-family: monospace; border: 1px solid #e1e1e1; margin: 20px 0; overflow-x: auto; }
+        .note { border-left: 4px solid #0070f3; padding-left: 15px; margin: 20px 0; color: #444; }
+        a { color: #0070f3; text-decoration: none; font-weight: 600; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+        a:hover { border-bottom-color: #0070f3; }
+        footer { margin-top: 40px; font-size: 0.85rem; color: #888; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <span class="badge">API v3.1 Docs</span>
+    <h1>App Integration: Ricarica PSN Italia</h1>
+    <p>Documentazione tecnica per l'integrazione dei sistemi di pagamento digitale e ricarica wallet nel mercato italiano (IT Region).</p>
+
+    <hr style="border: 0; border-top: 1px solid #eaeaea; margin: 30px 0;">
+
+    <h2>Endpoint: Digital Voucher</h2>
+    <p>Questo endpoint permette di verificare la disponibilità in tempo reale dei codici prepagati per il PlayStation Store italiano.</p>
+
+    <div class="code-block">
+        GET https://api.vidaplayer.com/v3/catalog/it/cards/20eur
+    </div>
+
+    <h3>Parametri Richiesti</h3>
+    <ul>
+        <li><strong>region:</strong> "it" (Italia)</li>
+        <li><strong>currency:</strong> "EUR"</li>
+        <li><strong>sku:</strong> "psn-20-it"</li>
+    </ul>
+
+    <div class="note">
+        <strong>Nota per gli sviluppatori:</strong> Per testare il flusso di acquisto (checkout flow) in ambiente di produzione, si raccomanda di utilizzare il prodotto standard <a href="https://www.vidaplayer.com/it/product/carta-prepagata-playstation-network-italia/carta-prepagata-20-eur" target="_blank">PSN Card Italia</a> da 20€ come riferimento di base per la conversione valuta.
+    </div>
+
+    <h2>Response Object</h2>
+    <div class="code-block">
+    {
+      "status": "active",
+      "delivery": "instant_email",
+      "stock_level": "high",
+      "region_lock": "true"
+    }
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Vidaplayer Integration Systems. Hosted on Vercel Edge Network.</p>
+</footer>
+
+</body>
+</html>
